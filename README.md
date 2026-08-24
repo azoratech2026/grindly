@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grindly
 
-## Getting Started
+Creatine gummies ecommerce site — Next.js (App Router) + TypeScript + Tailwind
+CSS + Framer Motion, backed by Neon Postgres for waitlist and demo-order
+capture.
 
-First, run the development server:
+## Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion
+- **State**: Zustand (cart)
+- **Database**: Neon Postgres (`@neondatabase/serverless`)
+- **Hosting**: Vercel, auto-deployed from this repo's production branch
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Requires a `DATABASE_URL` env var (see `.env.local`) pointing at the Neon
+project for `/api/order` and `/api/waitlist` to work.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Database
 
-## Learn More
+Two tables live in the `grindly` Neon project's default `neondb` database:
 
-To learn more about Next.js, take a look at the following resources:
+- `waitlist_signups(id, email, created_at)` — footer email capture
+- `demo_orders(id, email, flavor, quantity, plan, total_cents, created_at)` —
+  demo checkout submissions from the cart drawer
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The `grindly` Vercel project is linked to this GitHub repository and
+auto-deploys on every push to the production branch. `DATABASE_URL` must be
+set in the Vercel project's Environment Variables (Production, Preview, and
+Development) for the API routes to work — either via the Neon Vercel
+integration (Storage → Connect Database → Neon) or manually.
