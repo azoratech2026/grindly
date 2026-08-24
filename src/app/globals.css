@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050609;
+  --foreground: #f5f6fa;
+
+  --grind-black: #050609;
+  --grind-black-soft: #0b0d14;
+  --grind-panel: #0f1119;
+  --grind-line: rgba(255, 255, 255, 0.08);
+
+  --grind-blue: #2b8cff;
+  --grind-blue-bright: #4fb2ff;
+  --grind-purple: #9b3bff;
+  --grind-purple-deep: #6d28ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-grind-black: var(--grind-black);
+  --color-grind-black-soft: var(--grind-black-soft);
+  --color-grind-panel: var(--grind-panel);
+  --color-grind-line: var(--grind-line);
+
+  --color-grind-blue: var(--grind-blue);
+  --color-grind-blue-bright: var(--grind-blue-bright);
+  --color-grind-purple: var(--grind-purple);
+  --color-grind-purple-deep: var(--grind-purple-deep);
+
+  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--grind-purple);
+  color: white;
+}
+
+/* Brand gradient text */
+.text-gradient {
+  background: linear-gradient(90deg, var(--grind-blue-bright), var(--grind-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Reusable glow */
+.glow-blue {
+  box-shadow: 0 0 40px 0 rgba(43, 140, 255, 0.35);
+}
+.glow-purple {
+  box-shadow: 0 0 40px 0 rgba(155, 59, 255, 0.35);
+}
+
+/* Grain / noise overlay for depth */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--grind-black);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--grind-blue), var(--grind-purple));
+  border-radius: 999px;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
+  50% { transform: translateY(-18px) rotate(var(--rot, 0deg)); }
+}
+.animate-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3.5s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+}
