@@ -46,7 +46,7 @@ export function ProductSpin() {
   });
 
   const rotateY = useSpring(
-    useTransform(scrollYProgress, [0, 1], [-38, 38]),
+    useTransform(scrollYProgress, [0, 1], [0, 360]),
     { stiffness: 90, damping: 24, mass: 0.6 }
   );
   const rotateX = useSpring(
@@ -119,10 +119,32 @@ export function ProductSpin() {
 
             <motion.div
               style={{ rotateY, rotateX, scale }}
-              className="relative [transform-style:preserve-3d]"
+              className="relative w-64 sm:w-80 [transform-style:preserve-3d]"
             >
               <div className="absolute inset-0 scale-110 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl" />
-              <ProductPouch className="relative w-64 sm:w-80 drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]" />
+              <div
+                className="absolute inset-0"
+                style={{ backfaceVisibility: "hidden" }}
+              >
+                <ProductPouch
+                  face="front"
+                  className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
+                />
+              </div>
+              <div
+                className="absolute inset-0"
+                style={{
+                  backfaceVisibility: "hidden",
+                  transform: "rotateY(180deg)",
+                }}
+              >
+                <ProductPouch
+                  face="back"
+                  className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
+                />
+              </div>
+              {/* spacer to preserve layout size since faces are absolutely positioned */}
+              <div className="aspect-[684/1028] w-64 sm:w-80" />
             </motion.div>
           </div>
         </div>
