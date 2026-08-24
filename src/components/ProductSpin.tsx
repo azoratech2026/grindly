@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
-import { ProductPouch } from "./ProductPouch";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { ProductBox3D } from "./ProductBox3D";
 
 const ORBIT_CHIPS = [
   { label: "PERFORMANCE", angle: -90 },
@@ -45,14 +45,6 @@ export function ProductSpin() {
     offset: ["start start", "end end"],
   });
 
-  const rotateY = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 360]),
-    { stiffness: 90, damping: 24, mass: 0.6 }
-  );
-  const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.5, 1], [6, -4, 6]),
-    { stiffness: 90, damping: 24 }
-  );
   const scale = useTransform(
     scrollYProgress,
     [0, 0.15, 0.85, 1],
@@ -118,33 +110,11 @@ export function ProductSpin() {
             </motion.div>
 
             <motion.div
-              style={{ rotateY, rotateX, scale }}
-              className="relative w-64 sm:w-80 [transform-style:preserve-3d]"
+              style={{ scale }}
+              className="relative h-full w-64 sm:w-80"
             >
               <div className="absolute inset-0 scale-110 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl" />
-              <div
-                className="absolute inset-0"
-                style={{ backfaceVisibility: "hidden" }}
-              >
-                <ProductPouch
-                  face="front"
-                  className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
-                />
-              </div>
-              <div
-                className="absolute inset-0"
-                style={{
-                  backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                }}
-              >
-                <ProductPouch
-                  face="back"
-                  className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
-                />
-              </div>
-              {/* spacer to preserve layout size since faces are absolutely positioned */}
-              <div className="aspect-[684/1028] w-64 sm:w-80" />
+              <ProductBox3D progress={scrollYProgress} className="relative h-full w-full" />
             </motion.div>
           </div>
         </div>
