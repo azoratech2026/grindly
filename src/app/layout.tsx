@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Rajdhani, Bebas_Neue, Inter } from "next/font/google";
+import { Chatbot } from "@/components/Chatbot";
 import "./globals.css";
 
 const display = Bebas_Neue({
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-grind-black text-white font-body">
         {children}
+        <Chatbot />
       </body>
     </html>
   );
