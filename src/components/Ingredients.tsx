@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { PawPrint, Package, Droplets, Target } from "lucide-react";
 
 const HIGHLIGHTS = [
@@ -12,10 +13,20 @@ const HIGHLIGHTS = [
 ];
 
 export function Ingredients() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const blobY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+
   return (
-    <section id="ingredients" className="relative overflow-hidden py-28">
+    <section id="ingredients" ref={sectionRef} className="relative overflow-hidden py-28">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute right-0 top-1/2 h-[50vh] w-[50vh] -translate-y-1/2 rounded-full bg-grind-blue/15 blur-[120px]" />
+        <motion.div
+          style={{ y: blobY }}
+          className="absolute right-0 top-1/2 h-[50vh] w-[50vh] -translate-y-1/2 rounded-full bg-grind-blue/15 blur-[120px]"
+        />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">

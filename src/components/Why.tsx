@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Zap, Dumbbell, RotateCw, Box, Leaf, FlaskConical } from "lucide-react";
 
 const PILLARS = [
@@ -28,9 +29,20 @@ const BADGES = [
 ];
 
 export function Why() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const blobY = useTransform(scrollYProgress, [0, 1], [-80, 80]);
+
   return (
-    <section id="why" className="relative py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="why" ref={sectionRef} className="relative overflow-hidden py-28">
+      <motion.div
+        style={{ y: blobY }}
+        className="pointer-events-none absolute left-1/2 top-0 h-[55vh] w-[55vh] -translate-x-1/2 rounded-full bg-gradient-to-br from-grind-blue/10 to-grind-purple/10 blur-[130px]"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

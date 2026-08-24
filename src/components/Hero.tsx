@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { ProductPouch } from "./ProductPouch";
+import { Magnetic } from "./Magnetic";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -99,13 +100,15 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="#buy"
-              className="group relative overflow-hidden rounded-full bg-gradient-to-r from-grind-blue to-grind-purple px-8 py-4 font-heading text-base font-bold text-white shadow-xl shadow-grind-purple/25 transition hover:scale-105"
-            >
-              <span className="relative z-10">Fuel Your Grind — $34.99</span>
-              <span className="absolute inset-0 -translate-x-full bg-white/25 transition-transform duration-500 group-hover:translate-x-0" />
-            </a>
+            <Magnetic>
+              <a
+                href="#buy"
+                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-grind-blue to-grind-purple px-8 py-4 font-heading text-base font-bold text-white shadow-xl shadow-grind-purple/25 transition hover:scale-105"
+              >
+                <span className="relative z-10">Fuel Your Grind — $34.99</span>
+                <span className="absolute inset-0 -translate-x-full bg-white/25 transition-transform duration-500 group-hover:translate-x-0" />
+              </a>
+            </Magnetic>
             <a
               href="#why"
               className="rounded-full border border-white/20 px-8 py-4 font-heading text-base font-bold text-white/80 transition hover:border-white/50 hover:text-white"

@@ -1,21 +1,29 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Minus, Plus, ShieldCheck, Truck, RefreshCw } from "lucide-react";
 import { ProductPouch } from "./ProductPouch";
+import { useFlyToCart } from "./FlyToCart";
+import { Magnetic } from "./Magnetic";
 import { useCart, unitPriceFor, formatCents, UNIT_PRICE_CENTS } from "@/store/cart";
 
 export function BuyBox() {
   const { quantity, plan, setQuantity, setPlan, open, pulseAdded, addedPulse } =
     useCart();
+  const productRef = useRef<HTMLDivElement>(null);
 
   const unit = unitPriceFor(plan);
   const total = unit * quantity;
   const showCompare = plan === "subscribe";
 
-  function addToCart() {
+  const { fly, elements: flyElements } = useFlyToCart(() => {
     pulseAdded();
     open();
+  });
+
+  function addToCart() {
+    fly(productRef.current);
   }
 
   return (
@@ -33,8 +41,11 @@ export function BuyBox() {
           className="relative mx-auto"
         >
           <div className="absolute inset-0 scale-105 rounded-[3rem] bg-gradient-to-br from-grind-blue/25 to-grind-purple/25 blur-3xl" />
-          <ProductPouch className="relative w-72 sm:w-80 md:w-96 animate-float" />
+          <div ref={productRef}>
+            <ProductPouch className="relative w-72 sm:w-80 md:w-96 animate-float" />
+          </div>
         </motion.div>
+        {flyElements}
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -120,20 +131,22 @@ export function BuyBox() {
             </div>
           </div>
 
-          <button
-            onClick={addToCart}
-            className="group relative mt-8 w-full overflow-hidden rounded-full bg-gradient-to-r from-grind-blue to-grind-purple py-4 font-heading text-base font-bold text-white shadow-xl shadow-grind-purple/25 transition hover:scale-[1.02]"
-          >
-            <motion.span
-              key={addedPulse ? "added" : "idle"}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="relative z-10"
+          <Magnetic strength={0.15} className="mt-8 block w-full">
+            <button
+              onClick={addToCart}
+              className="group relative w-full overflow-hidden rounded-full bg-gradient-to-r from-grind-blue to-grind-purple py-4 font-heading text-base font-bold text-white shadow-xl shadow-grind-purple/25 transition hover:scale-[1.02]"
             >
-              {addedPulse ? "Added to cart ✓" : `Add to Cart — ${formatCents(total)}`}
-            </motion.span>
-            <span className="absolute inset-0 -translate-x-full bg-white/25 transition-transform duration-500 group-hover:translate-x-0" />
-          </button>
+              <motion.span
+                key={addedPulse ? "added" : "idle"}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="relative z-10"
+              >
+                {addedPulse ? "Added to cart ✓" : `Add to Cart — ${formatCents(total)}`}
+              </motion.span>
+              <span className="absolute inset-0 -translate-x-full bg-white/25 transition-transform duration-500 group-hover:translate-x-0" />
+            </button>
+          </Magnetic>
 
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/45">
             <span className="flex items-center gap-1.5">

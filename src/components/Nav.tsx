@@ -17,6 +17,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const open = useCart((s) => s.open);
+  const addedPulse = useCart((s) => s.addedPulse);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -60,13 +61,16 @@ export function Nav() {
           >
             Shop Now
           </a>
-          <button
+          <motion.button
+            data-cart-icon
             onClick={open}
             aria-label="Open cart"
+            animate={addedPulse ? { scale: [1, 1.3, 1] } : { scale: 1 }}
+            transition={{ duration: 0.4 }}
             className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-white/80 transition hover:border-white/40 hover:text-white"
           >
             <ShoppingBag className="h-4 w-4" />
-          </button>
+          </motion.button>
           <button
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
