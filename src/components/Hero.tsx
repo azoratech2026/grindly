@@ -11,9 +11,12 @@ import Image from "next/image";
 import { ChevronDown, Sparkles } from "lucide-react";
 import { ProductPouch } from "./ProductPouch";
 import { Magnetic } from "./Magnetic";
+import { useCursorSparkles } from "./CursorSparkles";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const { onMouseMove: onSparkleMove, elements: sparkleElements } =
+    useCursorSparkles();
   const mvX = useMotionValue(0);
   const mvY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mvY, [-0.5, 0.5], [12, -12]), {
@@ -40,8 +43,10 @@ export function Hero() {
   return (
     <section
       id="top"
+      onMouseMove={onSparkleMove}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-24"
     >
+      {sparkleElements}
       {/* background glows */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-1/2 h-[70vh] w-[70vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-grind-purple/20 blur-[120px]" />

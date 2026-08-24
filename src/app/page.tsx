@@ -4,6 +4,7 @@ import { ProductSpin } from "@/components/ProductSpin";
 import { Marquee } from "@/components/Marquee";
 import { Why } from "@/components/Why";
 import { Ingredients } from "@/components/Ingredients";
+import { VideoSpin } from "@/components/VideoSpin";
 import { HowToUse } from "@/components/HowToUse";
 import { BuyBox } from "@/components/BuyBox";
 import { Testimonials } from "@/components/Testimonials";
@@ -21,6 +22,7 @@ export default function Home() {
         <Marquee />
         <Why />
         <Ingredients />
+        <VideoSpin />
         <HowToUse />
         <BuyBox />
         <Testimonials />
