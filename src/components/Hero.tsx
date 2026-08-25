@@ -148,7 +148,10 @@ export function Hero() {
             className="relative [transform-style:preserve-3d]"
           >
             <div className="absolute inset-0 scale-110 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl" />
-            <ProductPouch className="relative w-72 sm:w-80 md:w-[22rem] drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]" />
+            <ProductPouch
+              priority
+              className="relative w-72 sm:w-80 md:w-[22rem] drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
+            />
           </motion.div>
 
           {/* floating gummy photo chips around the pouch */}

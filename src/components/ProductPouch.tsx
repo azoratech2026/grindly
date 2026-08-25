@@ -8,10 +8,12 @@ const SRC = {
 export function ProductPouch({
   className = "",
   face = "front",
+  priority = false,
 }: {
   className?: string;
   flavor?: string;
   face?: "front" | "back";
+  priority?: boolean;
 }) {
   return (
     <div
@@ -23,7 +25,7 @@ export function ProductPouch({
         fill
         sizes="(max-width: 640px) 90vw, 400px"
         className="object-cover"
-        priority
+        priority={priority}
       />
     </div>
   );
