@@ -16,15 +16,17 @@ function Beat({
   eyebrow,
   label,
   sub,
+  visibleFromStart = false,
 }: {
   progress: MotionValue<number>;
   range: [number, number, number, number];
   eyebrow: string;
   label: string;
   sub: string;
+  visibleFromStart?: boolean;
 }) {
-  const opacity = useTransform(progress, range, [0, 1, 1, 0]);
-  const y = useTransform(progress, range, [24, 0, 0, -24]);
+  const opacity = useTransform(progress, range, visibleFromStart ? [1, 1, 1, 0] : [0, 1, 1, 0]);
+  const y = useTransform(progress, range, visibleFromStart ? [0, 0, 0, -24] : [24, 0, 0, -24]);
   return (
     <motion.div style={{ opacity, y }} className="absolute inset-0">
       <p className="font-heading text-sm font-bold tracking-[0.3em] text-grind-blue-bright">
@@ -63,7 +65,7 @@ export function ProductSpin() {
 
   return (
     <section ref={trackRef} className="relative" style={{ height: "300vh" }}>
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+      <div className="sticky top-0 flex h-dvh items-center overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-[75vh] w-[75vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-grind-blue/15 to-grind-purple/15 blur-[130px]" />
         </div>
@@ -77,6 +79,7 @@ export function ProductSpin() {
               eyebrow="SCROLL TO EXPLORE"
               label="ONE PRODUCT."
               sub="No compromises."
+              visibleFromStart
             />
             <Beat
               progress={scrollYProgress}
@@ -103,7 +106,7 @@ export function ProductSpin() {
                   key={chip.label}
                   className="absolute left-1/2 top-1/2 origin-center"
                   style={{
-                    transform: `rotate(${chip.angle}deg) translate(15.5rem) rotate(${-chip.angle}deg)`,
+                    transform: `rotate(${chip.angle}deg) translate(clamp(6.5rem, 34vw, 15.5rem)) rotate(${-chip.angle}deg)`,
                   }}
                 >
                   <motion.span
