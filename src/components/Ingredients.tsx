@@ -32,8 +32,8 @@ export function Ingredients() {
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-5 sm:px-8 lg:grid-cols-2">
         {/* facts panel */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ x: -30 }}
+          whileInView={{ x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
@@ -83,8 +83,8 @@ export function Ingredients() {
 
         {/* gummy photo visual */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ scale: 0.9 }}
+          whileInView={{ scale: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="relative mx-auto aspect-square w-full max-w-md"

@@ -35,8 +35,8 @@ export function Testimonials() {
     <section id="reviews" className="relative py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-xl text-center"
@@ -59,8 +59,8 @@ export function Testimonials() {
           {REVIEWS.map((r, i) => (
             <motion.div
               key={r.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 30 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="rounded-3xl border border-white/10 bg-grind-panel p-6"

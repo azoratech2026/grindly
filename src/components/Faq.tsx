@@ -34,8 +34,8 @@ export function Faq() {
     <section id="faq" className="relative py-28">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="text-center"

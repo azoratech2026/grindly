@@ -68,8 +68,8 @@ export function Hero() {
         {/* copy */}
         <div>
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 16 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-heading font-semibold tracking-wide text-white/80"
           >
@@ -78,8 +78,8 @@ export function Hero() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 24 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-display text-[4rem] leading-[0.9] tracking-tight text-white sm:text-[5.5rem] lg:text-[6rem]"
           >
@@ -89,8 +89,8 @@ export function Hero() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 24 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 max-w-md text-lg text-white/60"
           >
@@ -100,8 +100,8 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ y: 24 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
@@ -123,8 +123,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={false}
             transition={{ duration: 0.7, delay: 0.5 }}
             className="mt-10 flex items-center gap-6 text-xs font-heading font-semibold tracking-wide text-white/50"
           >
@@ -184,8 +183,7 @@ export function Hero() {
 
       <motion.a
         href="#why"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        initial={false}
         transition={{ delay: 1 }}
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/40 sm:flex"
       >

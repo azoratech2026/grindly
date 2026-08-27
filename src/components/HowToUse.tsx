@@ -25,8 +25,8 @@ export function HowToUse() {
     <section className="relative py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 30 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-xl text-center"
@@ -44,8 +44,8 @@ export function HowToUse() {
           {STEPS.map((s, i) => (
             <motion.div
               key={s.n}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 30 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="relative text-center sm:text-left"
