@@ -26,9 +26,10 @@ export function Ingredients() {
         <motion.div
           style={{
             y: blobY,
-            background: "radial-gradient(circle, rgba(43,140,255,0.22) 0%, rgba(43,140,255,0) 70%)",
+            background:
+              "radial-gradient(circle, rgba(43,140,255,0.28) 0%, rgba(43,140,255,0.18) 35%, rgba(43,140,255,0.08) 60%, rgba(43,140,255,0.02) 82%, rgba(43,140,255,0) 100%)",
           }}
-          className="absolute right-0 top-1/2 h-[50vh] w-[50vh] -translate-y-1/2 rounded-full"
+          className="absolute right-0 top-1/2 h-[50vh] w-[50vh] -translate-y-1/2 rounded-full blur-2xl"
         />
       </div>
 
@@ -93,8 +94,11 @@ export function Ingredients() {
           className="relative mx-auto aspect-square w-full max-w-md"
         >
           <div
-            className="absolute inset-8 rounded-full"
-            style={{ background: "radial-gradient(circle, rgba(79,178,255,0.3) 0%, rgba(155,59,255,0.24) 50%, rgba(155,59,255,0) 75%)" }}
+            className="absolute inset-8 rounded-full blur-2xl"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(79,178,255,0.35) 0%, rgba(120,100,255,0.27) 35%, rgba(155,59,255,0.15) 60%, rgba(155,59,255,0.04) 82%, rgba(155,59,255,0) 100%)",
+            }}
           />
           <div className="relative grid h-full place-items-center">
             <div className="relative h-[62%] w-[62%] -rotate-6 animate-float overflow-hidden rounded-[2rem] ring-2 ring-white/15 drop-shadow-2xl">

@@ -50,16 +50,25 @@ export function Hero() {
       {/* background glows */}
       <div className="pointer-events-none absolute inset-0">
         <div
-          className="absolute left-1/2 top-1/2 h-[70vh] w-[70vh] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(155,59,255,0.35) 0%, rgba(155,59,255,0) 70%)" }}
+          className="absolute left-1/2 top-1/2 h-[70vh] w-[70vh] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(155,59,255,0.4) 0%, rgba(155,59,255,0.24) 35%, rgba(155,59,255,0.1) 60%, rgba(155,59,255,0.03) 82%, rgba(155,59,255,0) 100%)",
+          }}
         />
         <div
-          className="absolute -left-20 top-10 h-72 w-72 rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(43,140,255,0.4) 0%, rgba(43,140,255,0) 70%)" }}
+          className="absolute -left-20 top-10 h-72 w-72 rounded-full blur-2xl"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(43,140,255,0.45) 0%, rgba(43,140,255,0.28) 35%, rgba(43,140,255,0.12) 60%, rgba(43,140,255,0.03) 82%, rgba(43,140,255,0) 100%)",
+          }}
         />
         <div
-          className="absolute -right-10 bottom-0 h-96 w-96 rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(155,59,255,0.4) 0%, rgba(155,59,255,0) 70%)" }}
+          className="absolute -right-10 bottom-0 h-96 w-96 rounded-full blur-2xl"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(155,59,255,0.45) 0%, rgba(155,59,255,0.28) 35%, rgba(155,59,255,0.12) 60%, rgba(155,59,255,0.03) 82%, rgba(155,59,255,0) 100%)",
+          }}
         />
         <div
           className="absolute inset-0 opacity-[0.15]"
@@ -152,8 +161,11 @@ export function Hero() {
           className="relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center sm:h-[520px]"
         >
           <div
-            className="absolute inset-0 m-auto aspect-[684/1028] w-80 rounded-[3rem] sm:w-96"
-            style={{ background: "radial-gradient(circle, rgba(79,178,255,0.35) 0%, rgba(155,59,255,0.28) 50%, rgba(155,59,255,0) 75%)" }}
+            className="absolute inset-0 m-auto aspect-[684/1028] w-80 rounded-[3rem] blur-2xl sm:w-96"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(79,178,255,0.4) 0%, rgba(120,100,255,0.32) 35%, rgba(155,59,255,0.18) 60%, rgba(155,59,255,0.05) 82%, rgba(155,59,255,0) 100%)",
+            }}
           />
           <motion.div style={{ rotateX, rotateY }} className="relative">
             <ProductPouch

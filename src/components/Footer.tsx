@@ -29,8 +29,11 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10 pt-24">
       <div
-        className="pointer-events-none absolute inset-x-0 -top-40 left-1/2 h-80 w-[80vw] -translate-x-1/2 rounded-full"
-        style={{ background: "radial-gradient(ellipse, rgba(79,178,255,0.22) 0%, rgba(155,59,255,0.16) 45%, rgba(155,59,255,0) 75%)" }}
+        className="pointer-events-none absolute inset-x-0 -top-40 left-1/2 h-80 w-[80vw] -translate-x-1/2 rounded-full blur-2xl"
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(79,178,255,0.26) 0%, rgba(120,100,255,0.2) 35%, rgba(155,59,255,0.1) 60%, rgba(155,59,255,0.03) 82%, rgba(155,59,255,0) 100%)",
+        }}
       />
 
       <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">

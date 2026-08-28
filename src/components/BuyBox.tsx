@@ -30,8 +30,11 @@ export function BuyBox() {
     <section id="buy" className="relative py-28">
       <div className="pointer-events-none absolute inset-0">
         <div
-          className="absolute left-1/2 top-0 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(155,59,255,0.22) 0%, rgba(155,59,255,0) 70%)" }}
+          className="absolute left-1/2 top-0 h-[60vh] w-[60vh] -translate-x-1/2 rounded-full blur-2xl"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(155,59,255,0.3) 0%, rgba(155,59,255,0.18) 35%, rgba(155,59,255,0.08) 60%, rgba(155,59,255,0.02) 82%, rgba(155,59,255,0) 100%)",
+          }}
         />
       </div>
 
@@ -44,8 +47,11 @@ export function BuyBox() {
           className="relative mx-auto"
         >
           <div
-            className="absolute inset-0 scale-105 rounded-[3rem]"
-            style={{ background: "radial-gradient(circle, rgba(79,178,255,0.3) 0%, rgba(155,59,255,0.24) 50%, rgba(155,59,255,0) 75%)" }}
+            className="absolute inset-0 scale-105 rounded-[3rem] blur-2xl"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(79,178,255,0.35) 0%, rgba(120,100,255,0.27) 35%, rgba(155,59,255,0.15) 60%, rgba(155,59,255,0.04) 82%, rgba(155,59,255,0) 100%)",
+            }}
           />
           <div ref={productRef}>
             <ProductPouch className="relative w-72 sm:w-80 md:w-96 animate-float" />

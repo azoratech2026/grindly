@@ -41,9 +41,10 @@ export function Why() {
       <motion.div
         style={{
           y: blobY,
-          background: "radial-gradient(circle, rgba(79,178,255,0.18) 0%, rgba(155,59,255,0.12) 45%, rgba(155,59,255,0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(79,178,255,0.22) 0%, rgba(120,100,255,0.16) 30%, rgba(155,59,255,0.1) 55%, rgba(155,59,255,0.03) 78%, rgba(155,59,255,0) 100%)",
         }}
-        className="pointer-events-none absolute left-1/2 top-0 h-[55vh] w-[55vh] -translate-x-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-0 h-[55vh] w-[55vh] -translate-x-1/2 rounded-full blur-2xl"
       />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
@@ -76,8 +77,11 @@ export function Why() {
               className="group relative overflow-hidden rounded-3xl border border-white/10 bg-grind-panel p-8 transition hover:border-white/20"
             >
               <div
-                className="absolute -right-8 -top-8 h-32 w-32 rounded-full transition group-hover:scale-125"
-                style={{ background: "radial-gradient(circle, rgba(79,178,255,0.3) 0%, rgba(155,59,255,0.24) 50%, rgba(155,59,255,0) 75%)" }}
+                className="absolute -right-8 -top-8 h-32 w-32 rounded-full blur-xl transition group-hover:scale-125"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(79,178,255,0.35) 0%, rgba(120,100,255,0.26) 35%, rgba(155,59,255,0.14) 60%, rgba(155,59,255,0.04) 82%, rgba(155,59,255,0) 100%)",
+                }}
               />
               <div className="relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-grind-blue to-grind-purple shadow-lg shadow-grind-purple/30">
                 <p.icon className="h-6 w-6 text-white" />
