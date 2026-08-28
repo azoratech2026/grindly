@@ -49,9 +49,18 @@ export function Hero() {
       {sparkleElements}
       {/* background glows */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[70vh] w-[70vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-grind-purple/20 blur-[120px]" />
-        <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-grind-blue/25 blur-[100px]" />
-        <div className="absolute -right-10 bottom-0 h-96 w-96 rounded-full bg-grind-purple/25 blur-[120px]" />
+        <div
+          className="absolute left-1/2 top-1/2 h-[70vh] w-[70vh] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(155,59,255,0.35) 0%, rgba(155,59,255,0) 70%)" }}
+        />
+        <div
+          className="absolute -left-20 top-10 h-72 w-72 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(43,140,255,0.4) 0%, rgba(43,140,255,0) 70%)" }}
+        />
+        <div
+          className="absolute -right-10 bottom-0 h-96 w-96 rounded-full"
+          style={{ background: "radial-gradient(circle, rgba(155,59,255,0.4) 0%, rgba(155,59,255,0) 70%)" }}
+        />
         <div
           className="absolute inset-0 opacity-[0.15]"
           style={{
@@ -142,7 +151,10 @@ export function Hero() {
           onMouseLeave={onMouseLeave}
           className="relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center sm:h-[520px]"
         >
-          <div className="absolute inset-0 m-auto aspect-[684/1028] w-80 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl sm:w-96" />
+          <div
+            className="absolute inset-0 m-auto aspect-[684/1028] w-80 rounded-[3rem] sm:w-96"
+            style={{ background: "radial-gradient(circle, rgba(79,178,255,0.35) 0%, rgba(155,59,255,0.28) 50%, rgba(155,59,255,0) 75%)" }}
+          />
           <motion.div style={{ rotateX, rotateY }} className="relative">
             <ProductPouch
               priority

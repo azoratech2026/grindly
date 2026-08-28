@@ -82,7 +82,10 @@ export function ProductSpin() {
     <section ref={trackRef} className="relative" style={{ height: "300vh" }}>
       <div className="h-viewport sticky top-0 flex items-center overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/2 top-1/2 h-[75vh] w-[75vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-grind-blue/15 to-grind-purple/15 blur-[130px]" />
+          <div
+            className="absolute left-1/2 top-1/2 h-[75vh] w-[75vh] -translate-x-1/2 -translate-y-1/2 rounded-full"
+            style={{ background: "radial-gradient(circle, rgba(79,178,255,0.18) 0%, rgba(155,59,255,0.12) 45%, rgba(155,59,255,0) 75%)" }}
+          />
         </div>
 
         <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-5 sm:px-8 lg:grid-cols-2">
@@ -126,7 +129,7 @@ export function ProductSpin() {
                 >
                   <motion.span
                     style={{ rotate: counterRotate }}
-                    className="flex items-center gap-1.5 rounded-full border border-white/15 bg-grind-black-soft/80 px-3 py-1.5 text-[0.65rem] font-heading font-bold tracking-wide text-white/70 backdrop-blur"
+                    className="flex items-center gap-1.5 rounded-full border border-white/15 bg-grind-black-soft px-3 py-1.5 text-[0.65rem] font-heading font-bold tracking-wide text-white/70"
                   >
                     <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-r from-grind-blue-bright to-grind-purple" />
                     {chip.label}
@@ -136,7 +139,10 @@ export function ProductSpin() {
             </motion.div>
 
             <div className="relative w-64 sm:w-80">
-              <div className="absolute inset-0 scale-110 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl" />
+              <div
+                className="absolute inset-0 scale-110 rounded-[3rem]"
+                style={{ background: "radial-gradient(circle, rgba(79,178,255,0.35) 0%, rgba(155,59,255,0.28) 50%, rgba(155,59,255,0) 75%)" }}
+              />
               <motion.div
                 style={{ rotateX, scale, scaleX: cardScaleX }}
                 className="relative"

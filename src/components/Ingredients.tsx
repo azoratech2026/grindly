@@ -24,8 +24,11 @@ export function Ingredients() {
     <section id="ingredients" ref={sectionRef} className="relative overflow-hidden py-28">
       <div className="pointer-events-none absolute inset-0">
         <motion.div
-          style={{ y: blobY }}
-          className="absolute right-0 top-1/2 h-[50vh] w-[50vh] -translate-y-1/2 rounded-full bg-grind-blue/15 blur-[120px]"
+          style={{
+            y: blobY,
+            background: "radial-gradient(circle, rgba(43,140,255,0.22) 0%, rgba(43,140,255,0) 70%)",
+          }}
+          className="absolute right-0 top-1/2 h-[50vh] w-[50vh] -translate-y-1/2 rounded-full"
         />
       </div>
 
@@ -89,7 +92,10 @@ export function Ingredients() {
           transition={{ duration: 0.6 }}
           className="relative mx-auto aspect-square w-full max-w-md"
         >
-          <div className="absolute inset-8 rounded-full bg-gradient-to-br from-grind-blue/25 to-grind-purple/25 blur-3xl" />
+          <div
+            className="absolute inset-8 rounded-full"
+            style={{ background: "radial-gradient(circle, rgba(79,178,255,0.3) 0%, rgba(155,59,255,0.24) 50%, rgba(155,59,255,0) 75%)" }}
+          />
           <div className="relative grid h-full place-items-center">
             <div className="relative h-[62%] w-[62%] -rotate-6 animate-float overflow-hidden rounded-[2rem] ring-2 ring-white/15 drop-shadow-2xl">
               <Image

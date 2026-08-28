@@ -28,7 +28,10 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-white/10 pt-24">
-      <div className="pointer-events-none absolute inset-x-0 -top-40 left-1/2 h-80 w-[80vw] -translate-x-1/2 rounded-full bg-gradient-to-r from-grind-blue/15 to-grind-purple/15 blur-[120px]" />
+      <div
+        className="pointer-events-none absolute inset-x-0 -top-40 left-1/2 h-80 w-[80vw] -translate-x-1/2 rounded-full"
+        style={{ background: "radial-gradient(ellipse, rgba(79,178,255,0.22) 0%, rgba(155,59,255,0.16) 45%, rgba(155,59,255,0) 75%)" }}
+      />
 
       <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
         <h2 className="font-display text-4xl leading-none text-white sm:text-5xl">
