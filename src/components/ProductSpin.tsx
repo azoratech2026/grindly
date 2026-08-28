@@ -65,7 +65,7 @@ export function ProductSpin() {
 
   return (
     <section ref={trackRef} className="relative" style={{ height: "300vh" }}>
-      <div className="sticky top-0 flex h-dvh items-center overflow-hidden">
+      <div className="h-viewport sticky top-0 flex items-center overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/2 top-1/2 h-[75vh] w-[75vh] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-grind-blue/15 to-grind-purple/15 blur-[130px]" />
         </div>

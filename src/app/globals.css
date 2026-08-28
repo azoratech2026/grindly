@@ -120,3 +120,23 @@ body {
 .animate-marquee {
   animation: marquee 22s linear infinite;
 }
+
+/* Viewport-height helpers with an explicit fallback for browsers that
+   don't support dvh/svh, since Tailwind's own utility ordering can't be
+   relied on to cascade the fallback correctly. */
+.h-viewport {
+  height: 100vh;
+}
+@supports (height: 100dvh) {
+  .h-viewport {
+    height: 100dvh;
+  }
+}
+.min-h-viewport {
+  min-height: 100vh;
+}
+@supports (height: 100svh) {
+  .min-h-viewport {
+    min-height: 100svh;
+  }
+}

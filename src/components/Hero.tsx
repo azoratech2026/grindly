@@ -44,7 +44,7 @@ export function Hero() {
     <section
       id="top"
       onMouseMove={onSparkleMove}
-      className="relative flex min-h-[100svh] items-center overflow-hidden pt-24"
+      className="min-h-viewport relative flex items-center overflow-hidden pt-24"
     >
       {sparkleElements}
       {/* background glows */}
