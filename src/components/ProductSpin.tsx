@@ -27,8 +27,9 @@ function Beat({
 }) {
   const opacity = useTransform(progress, range, visibleFromStart ? [1, 1, 1, 0] : [0, 1, 1, 0]);
   const y = useTransform(progress, range, visibleFromStart ? [0, 0, 0, -24] : [24, 0, 0, -24]);
+  const zIndex = useTransform(opacity, (o) => (o > 0.5 ? 1 : 0));
   return (
-    <motion.div style={{ opacity, y }} className="absolute inset-0">
+    <motion.div style={{ opacity, y, zIndex }} className="absolute inset-0">
       <p className="font-heading text-sm font-bold tracking-[0.3em] text-grind-blue-bright">
         {eyebrow}
       </p>
@@ -68,14 +69,11 @@ export function ProductSpin() {
   // combination is known to render blank in Safari when a blurred sibling
   // sits inside the same 3D-transformed parent, which matched exactly the
   // section every "black screen" report pointed at.
-  const cardScaleX = useTransform(rotateY, (deg) => {
-    const rad = (deg * Math.PI) / 180;
-    return Math.max(0.08, Math.abs(Math.cos(rad)));
-  });
-  const frontOpacity = useTransform(rotateY, (deg) => {
-    const n = ((deg % 360) + 360) % 360;
-    return n <= 90 || n >= 270 ? 1 : 0;
-  });
+  const cardCos = useTransform(rotateY, (deg) => Math.cos((deg * Math.PI) / 180));
+  const cardScaleX = useTransform(cardCos, (c) => Math.max(0.08, Math.abs(c)));
+  // Smooth crossfade over a narrow band around the edge-on point (cos ~ 0)
+  // instead of an instant swap, so the two faces blend instead of popping.
+  const frontOpacity = useTransform(cardCos, [-0.06, 0.06], [0, 1]);
   const backOpacity = useTransform(frontOpacity, (v) => 1 - v);
 
   return (
