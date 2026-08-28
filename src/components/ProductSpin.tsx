@@ -63,6 +63,21 @@ export function ProductSpin() {
   const orbitRotate = useTransform(scrollYProgress, [0, 1], [0, 300]);
   const counterRotate = useTransform(orbitRotate, (v) => -v);
 
+  // Simulate the flip with a 2D squash + opacity crossfade instead of true
+  // 3D transforms (perspective/preserve-3d/backface-visibility). That
+  // combination is known to render blank in Safari when a blurred sibling
+  // sits inside the same 3D-transformed parent, which matched exactly the
+  // section every "black screen" report pointed at.
+  const cardScaleX = useTransform(rotateY, (deg) => {
+    const rad = (deg * Math.PI) / 180;
+    return Math.max(0.08, Math.abs(Math.cos(rad)));
+  });
+  const frontOpacity = useTransform(rotateY, (deg) => {
+    const n = ((deg % 360) + 360) % 360;
+    return n <= 90 || n >= 270 ? 1 : 0;
+  });
+  const backOpacity = useTransform(frontOpacity, (v) => 1 - v);
+
   return (
     <section ref={trackRef} className="relative" style={{ height: "300vh" }}>
       <div className="h-viewport sticky top-0 flex items-center overflow-hidden">
@@ -98,7 +113,7 @@ export function ProductSpin() {
           </div>
 
           {/* pinned rotating product */}
-          <div className="relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center [perspective:1400px] sm:h-[520px]">
+          <div className="relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center sm:h-[520px]">
             {/* continuous orbit ring */}
             <motion.div style={{ rotate: orbitRotate }} className="absolute inset-0">
               {ORBIT_CHIPS.map((chip) => (
@@ -120,35 +135,28 @@ export function ProductSpin() {
               ))}
             </motion.div>
 
-            <motion.div
-              style={{ rotateY, rotateX, scale }}
-              className="relative w-64 sm:w-80 [transform-style:preserve-3d]"
-            >
+            <div className="relative w-64 sm:w-80">
               <div className="absolute inset-0 scale-110 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl" />
-              <div
-                className="absolute inset-0"
-                style={{ backfaceVisibility: "hidden" }}
+              <motion.div
+                style={{ rotateX, scale, scaleX: cardScaleX }}
+                className="relative"
               >
-                <ProductPouch
-                  face="front"
-                  className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
-                />
-              </div>
-              <div
-                className="absolute inset-0"
-                style={{
-                  backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                }}
-              >
-                <ProductPouch
-                  face="back"
-                  className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
-                />
-              </div>
-              {/* spacer to preserve layout size since faces are absolutely positioned */}
-              <div className="aspect-[684/1028] w-64 sm:w-80" />
-            </motion.div>
+                <motion.div style={{ opacity: frontOpacity }} className="absolute inset-0">
+                  <ProductPouch
+                    face="front"
+                    className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
+                  />
+                </motion.div>
+                <motion.div style={{ opacity: backOpacity }} className="absolute inset-0">
+                  <ProductPouch
+                    face="back"
+                    className="h-full w-full drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
+                  />
+                </motion.div>
+                {/* spacer to preserve layout size since faces are absolutely positioned */}
+                <div className="aspect-[684/1028] w-64 sm:w-80" />
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>

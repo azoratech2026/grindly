@@ -140,13 +140,10 @@ export function Hero() {
           ref={ref}
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
-          className="relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center [perspective:1200px] sm:h-[520px]"
+          className="relative mx-auto flex h-[420px] w-full max-w-md items-center justify-center sm:h-[520px]"
         >
-          <motion.div
-            style={{ rotateX, rotateY }}
-            className="relative [transform-style:preserve-3d]"
-          >
-            <div className="absolute inset-0 scale-110 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl" />
+          <div className="absolute inset-0 m-auto aspect-[684/1028] w-80 rounded-[3rem] bg-gradient-to-br from-grind-blue/30 to-grind-purple/30 blur-3xl sm:w-96" />
+          <motion.div style={{ rotateX, rotateY }} className="relative">
             <ProductPouch
               priority
               className="relative w-72 sm:w-80 md:w-[22rem] drop-shadow-[0_35px_60px_rgba(120,60,255,0.35)]"
